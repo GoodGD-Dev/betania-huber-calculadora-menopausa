@@ -14,59 +14,67 @@
       height: 100vh;
       overflow: hidden;
     }
-
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 90px;
-      font-size: 16px;
-      color: white;
-      background-color: rgba(255, 255, 255, 0.5);
-      padding: 8px 16px;
-      border-radius: 20px;
-    }
+    
 
     .logo img {
-      width: 80px;
+      width: 54.36px;
       height: auto;
     }
     
     .welcome-layout {
       height: 100vh;
       width: 100%;
-      background-color: #9a8ac1;
+      background-color: #886BD0;
       display: flex;
       justify-content: space-around;
+      align-items: center;
     }
-    
+
     .welcome {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      text-align: start;
+      width: 712px;
+      height: 389px;
+      gap: 40px;
+    }
+    
+    .result-container {
+      height: 100vh;
+      width: 100%;
+      display: none;
+      justify-content: space-around;
+    }
+
+    .welcome-layout-final {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
       align-items: center;
-      text-align: center;
     }
 
     .welcome-final {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
       text-align: start;
+      width: 712px;
+      height: 269px;
+      gap: 20px;
     }
     
     .welcome-title {
       font-size: 28px;
       font-weight: 700;
       margin-bottom: 20px;
-      color: #9a8ac1;
+      color: #886BD0;
     }
     
     .welcome-subtitle {
       font-size: 20px;
       font-weight: 600;
       margin-bottom: 20px;
-      color: #9a8ac1;
+      color: #886BD0;
     }
     
     .welcome-text {
@@ -101,42 +109,57 @@
     }
     
     .prompt-title {
-      font-size: 32px;
+      font-size: 48px;
       font-weight: 700;
-      margin-bottom: 40px;
-      color: white;
-      max-width: 80%;
+      line-height: 52px;
+      letter-spacing: 0%;
+      color: #FFFFFF;
+    }
+
+    .prompt-text {
+      font-size: 20px;
+      line-height: 100%;
+      letter-spacing: 0;
+      font-weight: 500;
+      color: #FFFFFF;
     }
     
     .start-btn {
-      background-color: white;
-      color: #9a8ac1;
-      border: none;
-      border-radius: 6px;
-      padding: 16px 32px;
-      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+      width: 339px;
+      height: 55px;
+      border-radius: 100px;
+      border: solid 1px #FFFFFF;
       cursor: pointer;
       transition: all 0.2s ease;
-      font-weight: 600;
-      margin-top: 20px;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 100%;
+      padding: 25px 15px;
+    }
+
+    .start-btn img {
+      margin: 2.5px 0 2.5px 10px;
+      width: 20px;
+      height: 20px;
     }
     
     .start-btn:hover {
       background-color: #f5f5f5;
-      transform: translateY(-2px);
       box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
     }
     
     .quiz-container {
-      background-color: #9a8ac1;
+      background-color: #886BD0;
       width: 100%;
       height: 100vh;
     }
     
     .question-container {
-      max-width: 1024px;
-      width: 100%;
-      margin: 0 auto;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
@@ -144,14 +167,15 @@
       align-items: start;
       padding: 60px 80px;
       transition: opacity 0.5s ease;
+      gap: 20px;
     }
     
     .question-text {
-      font-size: 28px;
+      margin-bottom: 20px;
       font-weight: 700;
-      margin-bottom: 40px;
-      line-height: 1.3;
-      color: #fff;
+      font-size: 48px;
+      line-height: 52px;
+      color: #FFFFFF;
     }
 
     .question-opciones {
@@ -161,45 +185,33 @@
     
     .options-container {
       display: flex;
-      flex-direction: column;
       gap: 15px;
-      max-width: 500px;
     }
     
     .option-btn {
-      background: rgba(255, 255, 255, 0.1); /* Branco com 20% de opacidade */
-      border: 2px solid #e0e0e0;
-      border-radius: 6px;
-      padding: 16px 24px;
-      text-align: left;
-      font-size: 18px;
-      color: #303030;
+      background-color: rgba(255, 255, 255, 0.2);
+      width: 230px;
+      height: 55px;
+      border-radius: 200px;
+      border: 1px solid #FFFFFF;
+      padding: 15px 25px;
+      gap: 10px;
       transition: all 0.2s ease;
       cursor: pointer;
-      display: flex;
-      align-items: center;
       font-weight: 500;
+      font-size: 20px;
+      line-height: 100%;
     }
 
     
     .option-btn:hover {
-      background-color: rgba(255, 255, 255, 0.7);;
+      background-color: rgba(255, 255, 255, 0.7);
       transform: translateY(-2px);
       box-shadow: 0 4px 10px rgba(154, 138, 193, 0.2);
     }
     
-    .option-circle {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      border: 2px solid #e0e0e0;
-      margin-right: 15px;
-      display: inline-block;
-      flex-shrink: 0;
-    }
-    
-    .option-btn:hover .option-circle {
-      border-color: #9a8ac1;
+    .option-btn:hover {
+      border-color: #886BD0;
     }
     
     .progress-container {
@@ -207,32 +219,31 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      padding: 20px 40px;
     }
     
     .progress-bar {
-      height: 6px;
+      height: 25px;
+      width: 100%;
       background-color: white;
       width: 0%;
       transition: width 0.5s ease;
       border-radius: 3px;
     }
-    
-    .result-container {
-      padding: 60px 80px;
-      text-align: center;
+
+    .layout-btns {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
     }
     
     .result-card {
-      color: white;
-      font-size: 32px;
+      margin-top: 20px;
+      width: 207px;
+      height: 55px;
+      border-radius: 100px;
+      padding: 15px 25px;
+      gap: 10px;
       font-weight: 700;
-      min-width: 300px;
+      font-size: 20px;
+      line-height: 100%;
     }
     
     .result-title {
@@ -242,22 +253,46 @@
       color: white;
     }
     
-    .asintomatico { background-color: #28a745; }
-    .leve { background-color: #ffc107; }
-    .moderado { background-color: #fd7e14; }
-    .severo { background-color: #dc3545; }
+    .asintomatico { background-color: #F1F1F1;
+    color: #886BD0; }
+    .leve { background-color: #32A852; }
+    .moderado { background-color: #EBAC24; }
+    .severo { background-color: #E94335; }
+
+    .asintomatico-btn {
+      background-color: rgba(136, 107, 208, 0.2);
+      border: 1px solid #886BD0;
+      color: #886BD0;
+    }
+    .leve-btn {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 1px solid #FFFFFF;
+      color: #FFFFFF;
+    }
+    .moderado-btn {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 1px solid #FFFFFF;
+      color: #FFFFFF;
+
+    }
+    .severo-btn {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 1px solid #FFFFFF;
+      color: #FFFFFF;
+    }
     
     .reset-btn {
-      background-color: white;
-      color: #9a8ac1;
-      border: none;
-      border-radius: 6px;
-      padding: 16px 24px;
-      font-size: 18px;
-      cursor: pointer;
-      transition: all 0.2s ease;
+      margin-left: 40px;
       margin-top: 20px;
-      font-weight: 600;
+      width: 207px;
+      height: 55px;
+      border-radius: 100px;
+      padding: 15px 25px;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 100%;
+      cursor: pointer;
     }
     
     .reset-btn:hover {
@@ -267,14 +302,17 @@
     }
     
     .question-counter {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 16px;
-      color: white;
-      background-color: rgba(255, 255, 255, 0.2);
-      padding: 8px 16px;
-      border-radius: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 200px;
+      background-color: #FFFFFF;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 52px;
+      color: #886BD0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .welcome-image {
@@ -323,8 +361,9 @@
       }
       
       .question-text {
-        font-size: 22px;
-        margin-bottom: 30px;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 52px;
       }
       
       .result-container {
@@ -343,29 +382,30 @@
   </style>
 </head>
 <body>
-  <div class="logo">
-    <img src="https://betaniahuber.com/wp-content/uploads/2024/06/logoroxo.png" alt="logo">
-  </div>
   <div id="welcome-layout" class="welcome-layout">
     <div class="welcome">
-      <h2 class="prompt-title">Pronto para fazer uma breve avaliação?</h2>
-      <button class="start-btn" onclick="startQuiz()">Iniciar</button>
+      <div class="logo">
+        <img src="./Vector.png" alt="logo">
+      </div>
+      <h2 class="prompt-title">Avalie a escala da sua menopausa em minutos!</h2>
+      <span class="prompt-text">A Escala de Avaliação da Menopausa (Menopause Rating Scale – MRS) avalia a qualidade de vida e os sintomas do climatério através de 11 questões distribuídas em 3 subescalas: sintomas somato-vegetativos, psicológicos e urogenitais.</span>
+      <button class="start-btn" onclick="startQuiz()">INICIAR AVALIAÇÃO GRÁTIS
+        <img src="./seta.png" alt="icone">
+      </button>
+
     </div>
     <div class="welcome-image">
-      <img class="image" src="https://betaniahuber.com/wp-content/uploads/2024/10/2191032a-0403-47b9-bfef-1a98103d26cb-e1730395533879.jpg" alt="">
+      <img class="image" src="./IMAGEM.png" alt="test">
     </div>
   </div>
-  
   <div id="quiz-container" class="quiz-container">
     <div id="question-container" class="question-container" style="opacity: 0;">
       <!-- Question content will be inserted here by JavaScript -->
     </div>
-  
-    
     <div id="result-container" class="result-container" style="display: none">
       <!-- Result content will be inserted here by JavaScript -->
     </div>
-    
+  </div>
     <div class="progress-container">
       <div class="progress-bar" id="progress-bar"></div>
     </div>
@@ -373,25 +413,25 @@
   
   <script>
     const questions = [
-      "1 - Falta de ar, suores, calores",
-      "2 - Mal estar do coração (batidas do coração diferentes, saltos nas batidas, batidas mais longas, pressão)",
-      "3 - Problemas de sono (dificuldade em conciliar o sono, em dormir a noite toda e acordar muito cedo)",
-      "4 - Estado de ânimo depressivo (sentir-se para baixo, triste, a ponto das lágrimas, falta de vontade, instabilidade de humor)",
-      "5 - Irritabilidade (sentir-se nervosa, tensa, agressiva)",
-      "6 - Ansiedade (impaciência, pânico)",
-      "7 - Esgotamento físico e mental (queda geral em seu desempenho, falta de energia)",
-      "8 - Problemas sexuais (falta no desejo sexual, na atividade e satisfação)",
-      "9 - Problemas de bexiga (dificuldade de urinar, incontinência, desejo excessivo de urinar)",
-      "10 - Ressecamento vaginal (sensação de ressecamento, ardência e problemas durante a relação sexual)",
-      "11 - Problemas musculares e nas articulações (dores reumáticas e nas articulações)"
+      "Sua sensação de falta de ar, suores, calores:",
+      "Mal estar do coração (batidas do coração diferentes, saltos nas batidas, batidas mais longas, pressão):",
+      "Problemas de sono (dificuldade em conciliar o sono, em dormir a noite toda e acordar muito cedo):",
+      "Estado de ânimo depressivo (sentir-se para baixo, triste, a ponto das lágrimas, falta de vontade, instabilidade de humor):",
+      "Irritabilidade (sentir-se nervosa, tensa, agressiva):",
+      "Ansiedade (impaciência, pânico):",
+      "Esgotamento físico e mental (queda geral em seu desempenho, falta de energia):",
+      "Problemas sexuais (falta no desejo sexual, na atividade e satisfação):",
+      "Problemas de bexiga (dificuldade de urinar, incontinência, desejo excessivo de urinar):",
+      "Ressecamento vaginal (sensação de ressecamento, ardência e problemas durante a relação sexual):",
+      "Problemas musculares e nas articulações (dores reumáticas e nas articulações):"
     ];
     
     const optionLabels = [
       "Nenhum",
       "Pouco",
       "Moderado",
-      "Severo",
-      "Muito severo"
+      "Severa",
+      "Muito severa"
     ];
     
     let currentQuestion = 0;
@@ -405,7 +445,7 @@
     // Inicia o quiz ao clicar no botão iniciar
     function startQuiz() {
       welcomeLayout.style.display = "none";
-      quizContainer.style.display = "block";
+      quizContainer.style.display = "flex";
       
       setTimeout(() => {
         renderQuestion();
@@ -424,7 +464,7 @@ function renderQuestion() {
   // Cria o contador de questões
   const counter = document.createElement("div");
   counter.className = "question-counter";
-  counter.textContent = `${currentQuestion + 1}/${questions.length}`;
+  counter.textContent = `${currentQuestion + 1}`;
   
   // Cria o texto da questão
   const questionText = document.createElement("div");
@@ -441,21 +481,17 @@ function renderQuestion() {
     optionBtn.className = "option-btn";
     optionBtn.addEventListener("click", () => selectOption(i));
     
-    const circle = document.createElement("span");
-    circle.className = "option-circle";
-    
     const label = document.createElement("span");
     label.textContent = optionLabels[i];
     label.classList.add("question-opciones");
     
-    optionBtn.appendChild(circle);
     optionBtn.appendChild(label);
     optionsContainer.appendChild(optionBtn);
   }
   
   // Limpa o container de questão e adiciona os novos elementos
   questionContainer.innerHTML = '';
-  quizContainer.appendChild(counter); // Adiciona o contador ao quizContainer
+  questionContainer.appendChild(counter);
   questionContainer.appendChild(questionText);
   questionContainer.appendChild(optionsContainer);
   
@@ -490,23 +526,31 @@ function renderQuestion() {
     function getClassification(score) {
   if (score <= 4) {
     return {
-      text: "ASSINTOMÁTICO OU ESCASSO",
-      class: "asintomatico"
+      text: "ASSINTOMÁTICA",
+      class: "asintomatico",
+      classBtn: "asintomatico-btn",
+      img: "VectorROXO.png"
     };
   } else if (score >= 5 && score <= 8) {
     return {
       text: "LEVE",
-      class: "leve"
+      class: "leve",
+      classBtn: "leve-btn",
+      img: "Vector.png"
     };
   } else if (score >= 9 && score <= 15) {
     return {
       text: "MODERADO",
-      class: "moderado"
+      class: "moderado",
+      classBtn: "moderado-btn",
+      img: "Vector.png"
     };
   } else {
     return {
       text: "SEVERO",
-      class: "severo"
+      class: "severo",
+      classBtn: "severo-btn",
+      img: "Vector.png"
     };
   }
 }
@@ -525,19 +569,19 @@ function showResult() {
   
   switch(classification.class) {
     case "asintomatico":
-      imageSrc = "https://betaniahuber.com/wp-content/uploads/2024/06/logoroxo.png";
+      imageSrc = "./sem.png";
       altText = "Assintomático ou Escasso";
       break;
     case "leve":
-      imageSrc = "https://betaniahuber.com/wp-content/uploads/2024/06/logoroxo.png";
+      imageSrc = "leve.png";
       altText = "Leve";
       break;
     case "moderado":
-      imageSrc = "https://betaniahuber.com/wp-content/uploads/2024/06/logoroxo.png";
+      imageSrc = "moderado.png";
       altText = "Moderado";
       break;
     case "severo":
-      imageSrc = "https://betaniahuber.com/wp-content/uploads/2024/10/2191032a-0403-47b9-bfef-1a98103d26cb-e1730395533879.jpg";
+      imageSrc = "severo.png";
       altText = "Severo";
       break;
   }
@@ -548,28 +592,33 @@ function showResult() {
   // Modifica o background-color da .quiz-container de acordo com a classificação
   switch (classification.class) {
     case "asintomatico":
-      quizContainer.style.backgroundColor = '#28a745'; // Verde claro
+      quizContainer.style.backgroundColor = '#F1F1F1'; // Verde claro
       break;
     case "leve":
-      quizContainer.style.backgroundColor = '#ffc107'; // Amarelo claro
+      quizContainer.style.backgroundColor = '#32A852'; // Amarelo claro
       break;
     case "moderado":
-      quizContainer.style.backgroundColor = '#fd7e14'; // Laranja claro
+      quizContainer.style.backgroundColor = '#EBAC24'; // Laranja claro
       break;
     case "severo":
-      quizContainer.style.backgroundColor = '#dc3545'; // Vermelho claro
+      quizContainer.style.backgroundColor = '#E94335'; // Vermelho claro
       break;
   }
 
   // Atualiza o conteúdo do resultContainer com os dados
   resultContainer.innerHTML = `
-    <div class="welcome-layout ${classification.class}">
+    <div class="welcome-layout-final ${classification.class}">
       <div class="welcome-final">
-        <h2 class="result-title">Avaliação Concluída</h2>
-        <div class="result-card ${classification.class}">
+        <div class="logo">
+        <img src=${classification.img} alt="logo">
+        </div>
+        <h2 class="result-title ${classification.class}">Suas respostas indicam que sua menopausa é:</h2>
+        <div class="layout-btns">
+          <div class="result-card ${classification.classBtn}">
           ${classification.text}
         </div>
-        <button class="reset-btn" onclick="resetQuiz()">Reiniciar Avaliação</button>
+        <button class="reset-btn ${classification.classBtn}" onclick="resetQuiz()">Refazer</button>
+        </div>
       </div>
       <div class="welcome-image">
         <img src="${imageSrc}" alt="${altText}" class="result-image">
@@ -594,7 +643,7 @@ function showResult() {
       
       // Volta para a tela inicial
       quizContainer.style.display = "none";
-      quizContainer.style.backgroundColor = "#9a8ac1";
+      quizContainer.style.backgroundColor = "#886BD0";
       welcomeLayout.style.display = "flex";
       progressBar.style.width = "0%";
       questionContainer.style.opacity = 0;
