@@ -14,34 +14,45 @@
       height: 100vh;
       overflow: hidden;
     }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 90px;
+      font-size: 16px;
+      color: white;
+      background-color: rgba(255, 255, 255, 0.5);
+      padding: 8px 16px;
+      border-radius: 20px;
+    }
+
+    .logo img {
+      width: 80px;
+      height: auto;
+    }
     
     .welcome-layout {
-      display: flex;
       height: 100vh;
       width: 100%;
-    }
-    
-    .welcome-left {
-      background-color: white;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
-      text-align: center;
-      overflow-y: auto;
-    }
-    
-    .welcome-right {
       background-color: #9a8ac1;
-      flex: 1;
+      display: flex;
+      justify-content: space-around;
+    }
+    
+    .welcome {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 40px;
       text-align: center;
+    }
+
+    .welcome-final {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: start;
     }
     
     .welcome-title {
@@ -123,11 +134,14 @@
     }
     
     .question-container {
+      max-width: 1024px;
+      width: 100%;
+      margin: 0 auto;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
+      align-items: start;
       padding: 60px 80px;
       transition: opacity 0.5s ease;
     }
@@ -215,9 +229,6 @@
     }
     
     .result-card {
-      padding: 30px 40px;
-      border-radius: 10px;
-      margin: 40px 0;
       color: white;
       font-size: 32px;
       font-weight: 700;
@@ -265,19 +276,27 @@
       padding: 8px 16px;
       border-radius: 20px;
     }
+
+    .welcome-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+    }
+    .welcome-image img {
+          width: 500px;
+          height: auto;
+          object-fit: cover;
+          border-radius: 20px;
+    }
     
     @media (max-width: 768px) {
       .welcome-layout {
         flex-direction: column;
       }
       
-      .welcome-left {
+      .welcome {
         height: 70%;
-        padding: 20px;
-      }
-      
-      .welcome-right {
-        height: 30%;
         padding: 20px;
       }
       
@@ -320,48 +339,20 @@
         font-size: 24px;
         padding: 20px;
       }
-    }
+  }
   </style>
 </head>
 <body>
+  <div class="logo">
+    <img src="https://betaniahuber.com/wp-content/uploads/2024/06/logoroxo.png" alt="logo">
+  </div>
   <div id="welcome-layout" class="welcome-layout">
-    <div class="welcome-left">
-      <h1 class="welcome-title">CALCULADORA DA MENOPAUSA</h1>
-      <h2 class="welcome-subtitle">DESCUBRA COMO ESTÁ SUA QUALIDADE DE VIDA</h2>
-      
-      <p class="welcome-text">
-        A menopausa pode trazer uma série de mudanças no corpo e na mente, impactando o bem-estar diário. 
-        Nossa <strong>Calculadora da Escala de Avaliação da Menopausa (MRS)</strong> ajuda você a entender melhor os sintomas 
-        do climatério e como eles afetam sua qualidade de vida.
-      </p>
-      
-      <p class="welcome-text">
-        A avaliação é simples e rápida! Basta responder 11 perguntas que medem três aspectos principais:
-      </p>
-      
-      <div class="feature-list">
-        <div class="feature-item">
-          <span class="feature-highlight">Sintomas físicos</span> – Ondas de calor, suor excessivo, falta de ar, alterações no sono e dores musculares.
-        </div>
-        <div class="feature-item">
-          <span class="feature-highlight">Bem-estar emocional</span> – Mudanças de humor, irritabilidade, ansiedade e cansaço extremo.
-        </div>
-        <div class="feature-item">
-          <span class="feature-highlight">Saúde íntima</span> – Secura vaginal, desconforto na bexiga e alterações na vida sexual.
-        </div>
-      </div>
-      
-      <p class="welcome-text">
-        Ao final, você recebe um resultado que mostra a intensidade dos seus sintomas e como eles podem estar impactando sua rotina.
-      </p>
-      
-      <p class="welcome-text">
-        <span class="feature-highlight">🩺 Dê o primeiro passo para cuidar da sua saúde!</span> Faça o teste agora e descubra como você está enfrentando essa fase.
-      </p>
-    </div>
-    <div class="welcome-right">
+    <div class="welcome">
       <h2 class="prompt-title">Pronto para fazer uma breve avaliação?</h2>
       <button class="start-btn" onclick="startQuiz()">Iniciar</button>
+    </div>
+    <div class="welcome-image">
+      <img class="image" src="https://betaniahuber.com/wp-content/uploads/2024/10/2191032a-0403-47b9-bfef-1a98103d26cb-e1730395533879.jpg" alt="">
     </div>
   </div>
   
@@ -422,50 +413,56 @@
       }, 100);
     }
     
-    // Renderiza a questão atual
-    function renderQuestion() {
-      // Cria o contador de questões
-      const counter = document.createElement("div");
-      counter.className = "question-counter";
-      counter.textContent = `${currentQuestion + 1}/${questions.length}`;
-      
-      // Cria o texto da questão
-      const questionText = document.createElement("div");
-      questionText.className = "question-text";
-      questionText.textContent = questions[currentQuestion];
-      
-      // Cria o container de opções
-      const optionsContainer = document.createElement("div");
-      optionsContainer.className = "options-container";
-      
-      // Adiciona as opções
-      for (let i = 0; i < optionLabels.length; i++) {
-        const optionBtn = document.createElement("button");
-        optionBtn.className = "option-btn";
-        optionBtn.addEventListener("click", () => selectOption(i));
-        
-        const circle = document.createElement("span");
-        circle.className = "option-circle";
-        
-        const label = document.createElement("span");
-        label.textContent = optionLabels[i];
-        label.classList.add("question-opciones");
-        
-        optionBtn.appendChild(circle);
-        optionBtn.appendChild(label);
-        optionsContainer.appendChild(optionBtn);
-      }
-      
-      // Limpa o container de questão e adiciona os novos elementos
-      questionContainer.innerHTML = '';
-      quizContainer.appendChild(counter);
-      questionContainer.appendChild(questionText);
-      questionContainer.appendChild(optionsContainer);
-      
-      // Atualiza a barra de progresso
-      const progress = (currentQuestion / questions.length) * 100;
-      progressBar.style.width = `${progress}%`;
-    }
+// Renderiza a questão atual
+function renderQuestion() {
+  // Remove any existing question counter first
+  const existingCounter = document.querySelector(".question-counter");
+  if (existingCounter) {
+    existingCounter.remove();
+  }
+  
+  // Cria o contador de questões
+  const counter = document.createElement("div");
+  counter.className = "question-counter";
+  counter.textContent = `${currentQuestion + 1}/${questions.length}`;
+  
+  // Cria o texto da questão
+  const questionText = document.createElement("div");
+  questionText.className = "question-text";
+  questionText.textContent = questions[currentQuestion];
+  
+  // Cria o container de opções
+  const optionsContainer = document.createElement("div");
+  optionsContainer.className = "options-container";
+  
+  // Adiciona as opções
+  for (let i = 0; i < optionLabels.length; i++) {
+    const optionBtn = document.createElement("button");
+    optionBtn.className = "option-btn";
+    optionBtn.addEventListener("click", () => selectOption(i));
+    
+    const circle = document.createElement("span");
+    circle.className = "option-circle";
+    
+    const label = document.createElement("span");
+    label.textContent = optionLabels[i];
+    label.classList.add("question-opciones");
+    
+    optionBtn.appendChild(circle);
+    optionBtn.appendChild(label);
+    optionsContainer.appendChild(optionBtn);
+  }
+  
+  // Limpa o container de questão e adiciona os novos elementos
+  questionContainer.innerHTML = '';
+  quizContainer.appendChild(counter); // Adiciona o contador ao quizContainer
+  questionContainer.appendChild(questionText);
+  questionContainer.appendChild(optionsContainer);
+  
+  // Atualiza a barra de progresso
+  const progress = (currentQuestion / questions.length) * 100;
+  progressBar.style.width = `${progress}%`;
+}
     
     // Seleciona uma opção e avança para a próxima pergunta
     function selectOption(value) {
@@ -491,44 +488,95 @@
     
     // Determina a classificação com base na pontuação
     function getClassification(score) {
-      if (score <= 4) {
-        return {
-          text: "ASSINTOMÁTICO OU ESCASSO",
-          class: "asintomatico"
-        };
-      } else if (score >= 5 && score <= 8) {
-        return {
-          text: "LEVE",
-          class: "leve"
-        };
-      } else if (score >= 9 && score <= 15) {
-        return {
-          text: "MODERADO",
-          class: "moderado"
-        };
-      } else {
-        return {
-          text: "SEVERO",
-          class: "severo"
-        };
-      }
-    }
-    
-    // Mostra o resultado final
-    function showResult() {
-      const totalScore = scores.reduce((sum, score) => sum + score, 0);
-      const classification = getClassification(totalScore);
-      
-      questionContainer.style.display = "none";
-      resultContainer.style.display = "flex";
-      
-      resultContainer.innerHTML = `
+  if (score <= 4) {
+    return {
+      text: "ASSINTOMÁTICO OU ESCASSO",
+      class: "asintomatico"
+    };
+  } else if (score >= 5 && score <= 8) {
+    return {
+      text: "LEVE",
+      class: "leve"
+    };
+  } else if (score >= 9 && score <= 15) {
+    return {
+      text: "MODERADO",
+      class: "moderado"
+    };
+  } else {
+    return {
+      text: "SEVERO",
+      class: "severo"
+    };
+  }
+}
+
+// Mostra o resultado final
+function showResult() {
+  const totalScore = scores.reduce((sum, score) => sum + score, 0);
+  const classification = getClassification(totalScore);
+  
+  questionContainer.style.display = "none";
+  resultContainer.style.display = "flex";
+  
+  // Define a imagem com base na classificação
+  let imageSrc = "";
+  let altText = "";
+  
+  switch(classification.class) {
+    case "asintomatico":
+      imageSrc = "https://betaniahuber.com/wp-content/uploads/2024/06/logoroxo.png";
+      altText = "Assintomático ou Escasso";
+      break;
+    case "leve":
+      imageSrc = "https://betaniahuber.com/wp-content/uploads/2024/06/logoroxo.png";
+      altText = "Leve";
+      break;
+    case "moderado":
+      imageSrc = "https://betaniahuber.com/wp-content/uploads/2024/06/logoroxo.png";
+      altText = "Moderado";
+      break;
+    case "severo":
+      imageSrc = "https://betaniahuber.com/wp-content/uploads/2024/10/2191032a-0403-47b9-bfef-1a98103d26cb-e1730395533879.jpg";
+      altText = "Severo";
+      break;
+  }
+
+  // Seleciona o elemento .quiz-container
+  const quizContainer = document.querySelector('.quiz-container');
+
+  // Modifica o background-color da .quiz-container de acordo com a classificação
+  switch (classification.class) {
+    case "asintomatico":
+      quizContainer.style.backgroundColor = '#28a745'; // Verde claro
+      break;
+    case "leve":
+      quizContainer.style.backgroundColor = '#ffc107'; // Amarelo claro
+      break;
+    case "moderado":
+      quizContainer.style.backgroundColor = '#fd7e14'; // Laranja claro
+      break;
+    case "severo":
+      quizContainer.style.backgroundColor = '#dc3545'; // Vermelho claro
+      break;
+  }
+
+  // Atualiza o conteúdo do resultContainer com os dados
+  resultContainer.innerHTML = `
+    <div class="welcome-layout ${classification.class}">
+      <div class="welcome-final">
         <h2 class="result-title">Avaliação Concluída</h2>
         <div class="result-card ${classification.class}">
           ${classification.text}
         </div>
         <button class="reset-btn" onclick="resetQuiz()">Reiniciar Avaliação</button>
-      `;
+      </div>
+      <div class="welcome-image">
+        <img src="${imageSrc}" alt="${altText}" class="result-image">
+      </div>
+    </div>
+  `;
+
       
       // Completa a barra de progresso
       progressBar.style.width = "100%";
@@ -546,6 +594,7 @@
       
       // Volta para a tela inicial
       quizContainer.style.display = "none";
+      quizContainer.style.backgroundColor = "#9a8ac1";
       welcomeLayout.style.display = "flex";
       progressBar.style.width = "0%";
       questionContainer.style.opacity = 0;
