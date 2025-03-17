@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz de Sintomas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f8f9fa;
+    }
+    .quiz-container {
+      max-width: 700px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+    }
+    .question-container {
+      display: none;
+    }
+    .question-container.active {
+      display: block;
+    }
+    .progress-bar {
+      transition: width 0.5s ease;
+    }
+    .options-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .option-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .option-btn:hover {
+      transform: scale(1.1);
+    }
+    .option-label {
+      font-size: 12px;
+      text-align: center;
+      margin-top: 5px;
+    }
+    .result-card {
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 24px;
+      color: white;
+    }
+    .asintomatico {
+      background-color: #28a745;
+    }
+    .leve {
+      background-color: #ffc107;
+    }
+    .moderado {
+      background-color: #fd7e14;
+    }
+    .severo {
+      background-color: #dc3545;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h2 class="text-center mb-4">Quiz de Sintomas</h2>
+    
+    <div class="progress mb-4">
+      <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    
+    <div id="question-wrapper">
+      <!-- Questões serão inseridas aqui pelo JavaScript -->
+    </div>
+    
+    <div id="result" class="mt-3 text-center"></div>
+  </div>
+  
+  <script>
+    const questions = [
+      "Falta de ar, suores, calores",
+      "Mal estar do coração (batidas do coração diferentes, saltos nas batidas, batidas mais longas, pressão)",
+      "Problemas de sono (dificuldade em conciliar o sono, em dormir a noite toda e acordar muito cedo)",
+      "Estado de ânimo depressivo (sentir-se para baixo, triste, a ponto das lágrimas, falta de vontade, instabilidade de humor)",
+      "Irritabilidade (sentir-se nervosa, tensa, agressiva)",
+      "Ansiedade (impaciência, pânico)",
+      "Esgotamento físico e mental (queda geral em seu desempenho, falta de energia)",
+      "Problemas sexuais (falta no desejo sexual, na atividade e satisfação)",
+      "Problemas de bexiga (dificuldade de urinar, incontinência, desejo excessivo de urinar)",
+      "Ressecamento vaginal (sensação de ressecamento, ardência e problemas durante a relação sexual)",
+      "Problemas musculares e nas articulações (dores reumáticas e nas articulações)"
+    ];
+    
+    const optionLabels = [
+      "Nenhum",
+      "Pouco",
+      "Moderado",
+      "Severo",
+      "Muito severo"
+    ];
+    
+    let currentQuestion = 0;
+    let scores = Array(questions.length).fill(null);
+    const questionWrapper = document.getElementById("question-wrapper");
+    const resultDiv = document.getElementById("result");
+    const progressBar = document.querySelector(".progress-bar");
+    
+    // Inicializa o quiz
+    function initQuiz() {
+      renderQuestion();
+    }
+    
+    // Renderiza a questão atual
+    function renderQuestion() {
+      questionWrapper.innerHTML = '';
+      
+      const questionContainer = document.createElement("div");
+      questionContainer.className = "question-container active";
+      
+      const questionText = document.createElement("h4");
+      questionText.textContent = `${currentQuestion + 1}. ${questions[currentQuestion]}`;
+      questionContainer.appendChild(questionText);
+      
+      const optionsContainer = document.createElement("div");
+      optionsContainer.className = "options-container";
+      
+      for (let i = 0; i < 5; i++) {
+        const optionColumn = document.createElement("div");
+        optionColumn.className = "option-column";
+        
+        const optionBtn = document.createElement("div");
+        optionBtn.className = "option-btn btn " + (i === 0 ? "btn-outline-primary" : 
+                                                  i === 1 ? "btn-outline-info" : 
+                                                  i === 2 ? "btn-outline-warning" : 
+                                                  i === 3 ? "btn-outline-danger" : "btn-outline-dark");
+        optionBtn.textContent = i;
+        optionBtn.addEventListener("click", () => selectOption(i));
+        
+        const optionLabel = document.createElement("div");
+        optionLabel.className = "option-label";
+        optionLabel.textContent = optionLabels[i];
+        
+        optionColumn.appendChild(optionBtn);
+        optionColumn.appendChild(optionLabel);
+        optionsContainer.appendChild(optionColumn);
+      }
+      
+      questionContainer.appendChild(optionsContainer);
+      questionWrapper.appendChild(questionContainer);
+      
+      // Atualiza a barra de progresso
+      const progress = (currentQuestion / questions.length) * 100;
+      progressBar.style.width = `${progress}%`;
+      progressBar.setAttribute("aria-valuenow", progress);
+    }
+    
+    // Seleciona uma opção e avança para a próxima pergunta
+    function selectOption(value) {
+      scores[currentQuestion] = value;
+      
+      currentQuestion++;
+      
+      if (currentQuestion < questions.length) {
+        renderQuestion();
+      } else {
+        showResult();
+      }
+    }
+    
+    // Determina a classificação com base na pontuação
+    function getClassification(score) {
+      if (score <= 4) {
+        return {
+          text: "ASSINTOMÁTICO OU ESCASSO",
+          class: "asintomatico"
+        };
+      } else if (score >= 5 && score <= 8) {
+        return {
+          text: "LEVE",
+          class: "leve"
+        };
+      } else if (score >= 9 && score <= 15) {
+        return {
+          text: "MODERADO",
+          class: "moderado"
+        };
+      } else {
+        return {
+          text: "SEVERO",
+          class: "severo"
+        };
+      }
+    }
+    
+    // Mostra o resultado final
+    function showResult() {
+      const totalScore = scores.reduce((sum, score) => sum + score, 0);
+      const classification = getClassification(totalScore);
+      
+      questionWrapper.innerHTML = '';
+      
+      // Criar elemento de resultado
+      resultDiv.innerHTML = `
+        <h3 class="mb-4">Avaliação Concluída</h3>
+        <div class="result-card ${classification.class}">
+          ${classification.text}
+        </div>
+        <button class="btn btn-primary mt-3" onclick="resetQuiz()">Reiniciar Avaliação</button>
+      `;
+      
+      // Completa a barra de progresso
+      progressBar.style.width = "100%";
+      progressBar.setAttribute("aria-valuenow", 100);
+    }
+    
+    // Reinicia o quiz
+    function resetQuiz() {
+      currentQuestion = 0;
+      scores = Array(questions.length).fill(null);
+      resultDiv.innerHTML = '';
+      renderQuestion();
+    }
+    
+    // Inicializa o quiz quando a página carrega
+    initQuiz();
+  </script>
+</body>
+</html>
