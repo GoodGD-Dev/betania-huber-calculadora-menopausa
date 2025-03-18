@@ -13,6 +13,10 @@
       color: #FFFFFF; 
       background-color: #886BD0;
     }
+
+    * a{
+      text-decoration: none;
+    }
     
     .logo {
       fill: #FFFFFF;
@@ -248,6 +252,9 @@
     }
     
     .result-card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: auto;
       height: 55px;
       border-radius: 100px;
@@ -395,6 +402,7 @@
     @media (max-width: 768px) {
 
       .result-title {
+        font-size: 28px;
       margin-bottom: 0px;
     }
 
@@ -412,6 +420,10 @@
       }
 
       .welcome {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         text-align: center;
         padding: 32px;
         height: auto;
@@ -475,8 +487,7 @@
     }
 
     .welcome-layout-final {
-      display: flex;
-      flex-direction: column;
+      display: block;
     }
 
     .welcome-final {
@@ -487,7 +498,7 @@
       padding: 32px;
       height: auto;
       width: auto;
-      gap: 10px;
+      gap: 20px;
     }
     
     .layout-btns {
@@ -500,6 +511,11 @@
     .reset-btn {
       margin-left: 0px;
       margin-top: 0px;
+    }
+
+    .progress-container {
+      top: 0;
+      height: 25px;
     }
   }
   </style>
@@ -531,7 +547,7 @@
       <!-- Result content will be inserted here by JavaScript -->
     </div>
   </div>
-    <div class="progress-container">
+    <div class="progress-container" id="progress-container">
       <div class="progress-bar" id="progress-bar"></div>
     </div>
   </div>
@@ -590,6 +606,7 @@ function resetQuiz() {
     const questionContainer = document.getElementById("question-container");
     const resultContainer = document.getElementById("result-container");
     const progressBar = document.getElementById("progress-bar");
+    const progressContainer = document.getElementById("progress-container")
     
     // Inicia o quiz ao clicar no botão iniciar
     function startQuiz() {
@@ -775,6 +792,7 @@ function showResult() {
   registrarResultado(classification.text);
   
   questionContainer.style.display = "none";
+  progressContainer.style.display = "none";
   resultContainer.style.display = "flex";
   
   // Define the image based on the classification
