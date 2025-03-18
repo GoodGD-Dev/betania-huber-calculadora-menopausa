@@ -278,29 +278,31 @@
     .moderado { background-color: #EBAC24; }
     .severo { background-color: #E94335; }
 
-    .asintomatico-btn {
+    .asintomatico-btn, .asintomatico-btn-f5 {
       background-color: rgba(136, 107, 208, 0.2);
       border: 1px solid #886BD0;
       color: #886BD0;
     }
+
 
     .asintomatico-btn:hover {
       background-color: #886BD0;
       color: #FFFFFF;
     }
 
-    .leve-btn {
+    .leve-btn, .leve-btn-f5 {
       background-color: rgba(255, 255, 255, 0.2);
       border: 1px solid #FFFFFF;
       color: #FFFFFF;
     }
+    
     
     .leve-btn:hover {
       background-color: #FFFFFF;
       color: #32A852;
     }
 
-    .moderado-btn {
+    .moderado-btn, .moderado-btn-f5 {
       background-color: rgba(255, 255, 255, 0.2);
       border: 1px solid #FFFFFF;
       color: #FFFFFF;
@@ -311,7 +313,7 @@
       color: #EBAC24;
     }
     
-    .severo-btn {
+    .severo-btn, .severo-btn-f5 {
       background-color: rgba(255, 255, 255, 0.2);
       border: 1px solid #FFFFFF;
       color: #FFFFFF;
@@ -679,7 +681,8 @@ function getClassification(score) {
       classBtn: "asintomatico-btn",
       img: "asintomatico-logo",
       setaclass: "asintomatico-seta",
-      resetClass: "asintomatico-reset"
+      resetClass: "asintomatico-reset",
+      f5: "asintomatico-btn-f5"
     };
   } else if (score >= 5 && score <= 8) {
     return {
@@ -688,7 +691,8 @@ function getClassification(score) {
       classBtn: "leve-btn",
       img: "leve-logo",
       setaclass: "leve-seta",
-      resetClass: "white-reset"
+      resetClass: "white-reset",
+      f5: "leve-btn-f5"
     };
   } else if (score >= 9 && score <= 15) {
     return {
@@ -697,7 +701,8 @@ function getClassification(score) {
       classBtn: "moderado-btn",
       img: "leve-logo",
       setaclass: "asintomatico-seta",
-      resetClass: "white-reset"
+      resetClass: "white-reset",
+      f5: "moderado-btn-f5"
     };
   } else {
     return {
@@ -706,7 +711,8 @@ function getClassification(score) {
       classBtn: "severo-btn",
       img: "leve-logo",
       setaclass: "asintomatico-seta",
-      resetClass: "white-reset"
+      resetClass: "white-reset",
+      f5: "severo-btn-f5"
     };
   }
 }
@@ -825,10 +831,12 @@ function showResult() {
         </div>
         <h2 class="result-title ${classification.class}">Suas respostas indicam que<br> sua menopausa é ${classification.text}</h2>
         <div class="layout-btns">
+          <a href="#">
           <button class="result-card ${classification.classBtn}">
-          AGENDAR CONSULTA
-        </button>
-        <button class="reset-btn ${classification.classBtn}" onclick="resetQuiz()">
+            AGENDAR CONSULTA
+          </button>
+        </a>
+        <button class="reset-btn ${classification.f5}" onclick="resetQuiz()">
           <img class="reset-btn--img ${classification.resetClass}" src="./seta.svg" alt="reset">
           Aperte F5 para reiniciar o teste</button>
         </div>
