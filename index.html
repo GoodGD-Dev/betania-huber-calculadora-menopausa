@@ -14,10 +14,14 @@
       background-color: #886BD0;
     }
     
+    .logo {
+      fill: #FFFFFF;
+    }
 
     .logo img {
       width: 54.36px;
       height: auto;
+      filter: brightness(0) invert(1);
     }
     
     .welcome-layout {
@@ -252,10 +256,11 @@
       font-size: 20px;
       line-height: 100%;
       text-align: center;
+      cursor: pointer;
     }
-    
+
     .result-title {
-      width: 70%;
+      width: 100%;
       font-size: 42px;
       font-weight: 700;
       margin-bottom: 20px;
@@ -265,20 +270,34 @@
     .asintomatico { background-color: #F1F1F1;
     color: #886BD0; }
 
+    .asintomatico-logo img {
+      filter: none;
+    }
+
     .leve { background-color: #32A852; }
     .moderado { background-color: #EBAC24; }
     .severo { background-color: #E94335; }
 
     .asintomatico-btn {
-      background-color: rgba(136, 107, 208, 0.);
+      background-color: rgba(136, 107, 208, 0.2);
       border: 1px solid #886BD0;
       color: #886BD0;
+    }
+
+    .asintomatico-btn:hover {
+      background-color: #886BD0;
+      color: #FFFFFF;
     }
 
     .leve-btn {
       background-color: rgba(255, 255, 255, 0.2);
       border: 1px solid #FFFFFF;
       color: #FFFFFF;
+    }
+    
+    .leve-btn:hover {
+      background-color: #FFFFFF;
+      color: #32A852;
     }
 
     .moderado-btn {
@@ -287,13 +306,21 @@
       color: #FFFFFF;
     }
 
-
+    .moderado-btn:hover {
+      background-color: #FFFFFF;
+      color: #EBAC24;
+    }
+    
     .severo-btn {
       background-color: rgba(255, 255, 255, 0.2);
       border: 1px solid #FFFFFF;
       color: #FFFFFF;
     }
 
+    .severo-btn:hover {
+      background-color: #FFFFFF;
+      color: #E94335;
+    }
     
     .reset-btn {
       background-color: transparent;
@@ -310,6 +337,10 @@
       line-height: 100%;
       cursor: pointer;
       gap: 0px;
+    }
+
+    .white-reset {
+      filter: brightness(0) invert(1);
     }
 
     .reset-btn--img {
@@ -475,7 +506,7 @@
   <div id="welcome-layout" class="welcome-layout">
     <div class="welcome">
       <div class="logo">
-        <img src="./Vector.png" alt="logo">
+        <img src="./logo.svg" alt="logo">
       </div>
       <div class="welcome-image--mobile">
         <img src="./IMAGEM.png" alt="test">
@@ -483,7 +514,7 @@
       <h2 class="prompt-title">Avalie a escala da sua menopausa em minutos!</h2>
       <span class="prompt-text">A Escala de Avaliação da Menopausa (Menopause Rating Scale – MRS) avalia a qualidade de vida e os sintomas do climatério através de 11 questões distribuídas em 3 subescalas: sintomas somato-vegetativos, psicológicos e urogenitais.</span>
       <button class="start-btn" onclick="startQuiz()">INICIAR AVALIAÇÃO GRÁTIS
-        <img src="./seta.png" alt="icone">
+        <img src="./setaprolado.svg" alt="icone">
       </button>
     </div>
     <div class="welcome-image">
@@ -646,32 +677,36 @@ function getClassification(score) {
       text: "ASSINTOMÁTICA",
       class: "asintomatico",
       classBtn: "asintomatico-btn",
-      img: "VectorROXO.png",
-      setaclass: "asintomatico-seta"
+      img: "asintomatico-logo",
+      setaclass: "asintomatico-seta",
+      resetClass: "asintomatico-reset"
     };
   } else if (score >= 5 && score <= 8) {
     return {
       text: "LEVE",
       class: "leve",
       classBtn: "leve-btn",
-      img: "Vector.png",
-      setaclass: "leve-seta"
+      img: "leve-logo",
+      setaclass: "leve-seta",
+      resetClass: "white-reset"
     };
   } else if (score >= 9 && score <= 15) {
     return {
       text: "MODERADO",
       class: "moderado",
       classBtn: "moderado-btn",
-      img: "Vector.png",
-      setaclass: "asintomatico-seta"
+      img: "leve-logo",
+      setaclass: "asintomatico-seta",
+      resetClass: "white-reset"
     };
   } else {
     return {
       text: "SEVERO",
       class: "severo",
       classBtn: "severo-btn",
-      img: "Vector.png",
-      setaclass: "asintomatico-seta"
+      img: "leve-logo",
+      setaclass: "asintomatico-seta",
+      resetClass: "white-reset"
     };
   }
 }
@@ -782,19 +817,19 @@ function showResult() {
   resultContainer.innerHTML = `
     <div class="welcome-layout-final ${classification.class}">
       <div class="welcome-final">
-        <div class="logo">
-        <img src=${classification.img} alt="logo">
+        <div class="logo ${classification.img}">
+        <img src="./logo.svg " alt="logo">
         </div>
         <div class="welcome-image--mobile">
         <img src="${imageSrc}" alt="${altText}" class="result-image">
         </div>
-        <h2 class="result-title ${classification.class}">Suas respostas indicam que sua menopausa é:</h2>
+        <h2 class="result-title ${classification.class}">Suas respostas indicam que<br> sua menopausa é ${classification.text}</h2>
         <div class="layout-btns">
-          <div class="result-card ${classification.classBtn}">
-          ${classification.text}
-        </div>
+          <button class="result-card ${classification.classBtn}">
+          AGENDAR CONSULTA
+        </button>
         <button class="reset-btn ${classification.classBtn}" onclick="resetQuiz()">
-          <img class="reset-btn--img ${classification.setaclass}" src="./reset.png" alt="reset">
+          <img class="reset-btn--img ${classification.resetClass}" src="./seta.svg" alt="reset">
           Aperte F5 para reiniciar o teste</button>
         </div>
       </div>
