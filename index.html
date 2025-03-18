@@ -10,7 +10,7 @@
     body {
       font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       margin: 0;
-      color: #303030; 
+      color: #FFFFFF; 
       background-color: #886BD0;
     }
     
@@ -34,7 +34,7 @@
       text-align: start;
       width: 712px;
       height: 389px;
-      gap: 40px;
+      gap: 20px;
     }
     
     .result-container {
@@ -112,6 +112,7 @@
       line-height: 52px;
       letter-spacing: 0%;
       color: #FFFFFF;
+      margin-bottom: 0;
     }
 
     .prompt-text {
@@ -138,6 +139,7 @@
       font-weight: 700;
       line-height: 100%;
       padding: 25px 15px;
+      margin-top: 20px;
     }
 
     .start-btn img {
@@ -147,6 +149,7 @@
     }
     
     .start-btn:hover {
+      color:#886BD0;
       background-color: #f5f5f5;
       box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
     }
@@ -180,15 +183,14 @@
       line-height: 52px;
       color: #FFFFFF;
     }
-
-    .question-opciones {
-      font-size: 18px;
-      color: #fff;
-    }
     
     .options-container {
       display: flex;
       gap: 15px;
+    }
+
+    .question-opciones {
+      font-size: 18px;
     }
     
     .option-btn {
@@ -204,18 +206,18 @@
       font-weight: 500;
       font-size: 20px;
       line-height: 100%;
+      color: #FFFFFF;
     }
 
     
     .option-btn:hover {
-      background-color: rgba(255, 255, 255, 0.7);
+      background-color: #FFFFFF;
       transform: translateY(-2px);
       box-shadow: 0 4px 10px rgba(154, 138, 193, 0.2);
-    }
-    
-    .option-btn:hover {
       border-color: #886BD0;
+      color: #886BD0;
     }
+  
     
     .progress-container {
       position: absolute;
@@ -234,16 +236,18 @@
     }
 
     .layout-btns {
+      width: 70%;
       display: flex;
+      justify-content: start;
+      align-items: center;
+      gap: 40px;
     }
     
     .result-card {
-      margin-top: 20px;
-      width: 220px;
+      width: auto;
       height: 55px;
       border-radius: 100px;
       padding: 15px 25px;
-      gap: 10px;
       font-weight: 700;
       font-size: 20px;
       line-height: 100%;
@@ -251,6 +255,7 @@
     }
     
     .result-title {
+      width: 70%;
       font-size: 42px;
       font-weight: 700;
       margin-bottom: 20px;
@@ -259,50 +264,57 @@
     
     .asintomatico { background-color: #F1F1F1;
     color: #886BD0; }
+
     .leve { background-color: #32A852; }
     .moderado { background-color: #EBAC24; }
     .severo { background-color: #E94335; }
 
     .asintomatico-btn {
-      background-color: rgba(136, 107, 208, 0.2);
+      background-color: rgba(136, 107, 208, 0.);
       border: 1px solid #886BD0;
       color: #886BD0;
     }
+
     .leve-btn {
       background-color: rgba(255, 255, 255, 0.2);
       border: 1px solid #FFFFFF;
       color: #FFFFFF;
     }
+
     .moderado-btn {
       background-color: rgba(255, 255, 255, 0.2);
       border: 1px solid #FFFFFF;
       color: #FFFFFF;
-
     }
+
+
     .severo-btn {
       background-color: rgba(255, 255, 255, 0.2);
       border: 1px solid #FFFFFF;
       color: #FFFFFF;
     }
+
     
     .reset-btn {
-      margin-left: 40px;
-      margin-top: 20px;
-      width: 220px;
-      height: 55px;
-      border-radius: 100px;
-      padding: 15px 25px;
-      gap: 10px;
-      font-weight: 700;
-      font-size: 20px;
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      border: none;
+      width: 138px;
+      height: 36px;
+      gap: 20px;
+      font-weight: 500;
+      font-size: 14px;
       line-height: 100%;
       cursor: pointer;
+      gap: 0px;
     }
-    
-    .reset-btn:hover {
-      background-color: #f5f5f5;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+
+    .reset-btn--img {
+      width: 16px;
+      height: 16px;
     }
     
     .question-counter {
@@ -332,8 +344,35 @@
           border-radius: 20px;
           margin-bottom: 40px;
     }
+
+    .welcome-image--mobile {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      
+    }
+    .welcome-image--mobile img {
+          width: 500px;
+          height: auto;
+          object-fit: cover;
+          border-radius: 20px;
+          margin-bottom: 40px;
+    }
     
-    @media (max-width: 768px) {    
+    @media (max-width: 768px) {
+
+      .result-title {
+      margin-bottom: 0px;
+    }
+
+      .welcome-image--mobile {
+      display: flex;    
+    }
+    
+    .welcome-image--mobile img {
+          width: 280px;
+          margin-bottom: 0px;
+    }
       .welcome-layout {
         display: flex;
         flex-direction: column;
@@ -356,10 +395,7 @@
       }
 
       .welcome-image {
-      display: block;  
-    }
-    .welcome-image img {
-          width: 320px;
+      display: none;  
     }
 
     .quiz-container {
@@ -380,6 +416,7 @@
       align-items: center;
       margin-left: 0px;
       padding: 32px;
+      gap: 0px;
     }
 
     .options-container {
@@ -410,10 +447,14 @@
     }
 
     .welcome-final {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-align: center;
       padding: 32px;
       height: auto;
       width: auto;
+      gap: 10px;
     }
     
     .layout-btns {
@@ -425,7 +466,7 @@
 
     .reset-btn {
       margin-left: 0px;
-      margin-top: 20px;
+      margin-top: 0px;
     }
   }
   </style>
@@ -436,6 +477,9 @@
       <div class="logo">
         <img src="./Vector.png" alt="logo">
       </div>
+      <div class="welcome-image--mobile">
+        <img src="./IMAGEM.png" alt="test">
+      </div>
       <h2 class="prompt-title">Avalie a escala da sua menopausa em minutos!</h2>
       <span class="prompt-text">A Escala de Avaliação da Menopausa (Menopause Rating Scale – MRS) avalia a qualidade de vida e os sintomas do climatério através de 11 questões distribuídas em 3 subescalas: sintomas somato-vegetativos, psicológicos e urogenitais.</span>
       <button class="start-btn" onclick="startQuiz()">INICIAR AVALIAÇÃO GRÁTIS
@@ -443,7 +487,7 @@
       </button>
     </div>
     <div class="welcome-image">
-      <img class="image" src="./IMAGEM.png" alt="test">
+      <img src="./IMAGEM.png" alt="test">
     </div>
   </div>
   <div id="quiz-container" class="quiz-container">
@@ -460,6 +504,30 @@
   </div>
   
   <script>
+
+    // At the top of your script
+let resultSubmitted = false;
+
+// Then modify your showResult function
+function showResult() {
+  // Only register if not already submitted
+  if (!resultSubmitted) {
+    const totalScore = scores.reduce((sum, score) => sum + score, 0);
+    const classification = getClassification(totalScore);
+    
+    // Register result and set flag to true
+    registrarResultado(classification.text);
+    resultSubmitted = true;
+    
+    // Rest of your showResult code...
+  }
+}
+
+// And reset the flag when quiz is reset
+function resetQuiz() {
+  resultSubmitted = false;
+  // Rest of your resetQuiz code...
+}
     const questions = [
       "Sua sensação de falta de ar, suores, calores:",
       "Mal estar do coração (batidas do coração diferentes, saltos nas batidas, batidas mais longas, pressão):",
@@ -571,47 +639,104 @@ function renderQuestion() {
     }
     
     // Determina a classificação com base na pontuação
-    function getClassification(score) {
+    // Determine the classification based on the score
+function getClassification(score) {
   if (score <= 4) {
     return {
       text: "ASSINTOMÁTICA",
       class: "asintomatico",
       classBtn: "asintomatico-btn",
-      img: "VectorROXO.png"
+      img: "VectorROXO.png",
+      setaclass: "asintomatico-seta"
     };
   } else if (score >= 5 && score <= 8) {
     return {
       text: "LEVE",
       class: "leve",
       classBtn: "leve-btn",
-      img: "Vector.png"
+      img: "Vector.png",
+      setaclass: "leve-seta"
     };
   } else if (score >= 9 && score <= 15) {
     return {
       text: "MODERADO",
       class: "moderado",
       classBtn: "moderado-btn",
-      img: "Vector.png"
+      img: "Vector.png",
+      setaclass: "asintomatico-seta"
     };
   } else {
     return {
       text: "SEVERO",
       class: "severo",
       classBtn: "severo-btn",
-      img: "Vector.png"
+      img: "Vector.png",
+      setaclass: "asintomatico-seta"
     };
   }
 }
 
-// Mostra o resultado final
+// Function to register the result in Google Sheets
+// Add this variable outside the function to track the last submission time
+let lastSubmissionTime = 0;
+
+function registrarResultado(resultado) {
+  // Get current time
+  const currentTime = Date.now();
+  
+  // Check if 5 seconds (5000ms) have passed since last submission
+  if (currentTime - lastSubmissionTime < 5000) {
+    console.log('Cooldown active, waiting before submitting again');
+    return; // Exit the function without submitting
+  }
+  
+  // Update the last submission time
+  lastSubmissionTime = currentTime;
+  
+  // URL of your Google Apps Script API
+  const apiUrl = 'https://script.google.com/macros/s/AKfycbymPdM8azAL0ZyiXDLfjEgR8lh2XFsN_UL24NWkNHQn6LmG2tXDgu0hkR3zASCM2H8dqA/exec';
+  
+  // Log that we're attempting to send data
+  console.log('Attempting to send data:', resultado);
+  
+  fetch(apiUrl, {
+    method: 'POST',
+    mode: 'no-cors', // This is important for cross-origin requests
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      resultado: resultado.toLowerCase() // Send in lowercase to facilitate comparison
+    })
+  })
+  .then(response => {
+    console.log('Raw response:', response);
+    // When using no-cors, we cannot read the response body directly
+    return { success: true };
+  })
+  .then(data => {
+    console.log('Result registered successfully:', data);
+  })
+  .catch(error => {
+    console.error('Error registering result:', error);
+  });
+}
+
+// Show the final result
 function showResult() {
   const totalScore = scores.reduce((sum, score) => sum + score, 0);
   const classification = getClassification(totalScore);
   
+  console.log('Total score:', totalScore);
+  console.log('Classification:', classification.text);
+  
+  // Register the result in Google Sheets
+  registrarResultado(classification.text);
+  
   questionContainer.style.display = "none";
   resultContainer.style.display = "flex";
   
-  // Define a imagem com base na classificação
+  // Define the image based on the classification
   let imageSrc = "";
   let altText = "";
   
@@ -634,38 +759,43 @@ function showResult() {
       break;
   }
 
-  // Seleciona o elemento .quiz-container
+  // Select the .quiz-container element
   const quizContainer = document.querySelector('.quiz-container');
 
-  // Modifica o background-color da .quiz-container de acordo com a classificação
+  // Modify the background-color of .quiz-container according to the classification
   switch (classification.class) {
     case "asintomatico":
-      quizContainer.style.backgroundColor = '#F1F1F1'; // Verde claro
+      quizContainer.style.backgroundColor = '#F1F1F1';
       break;
     case "leve":
-      quizContainer.style.backgroundColor = '#32A852'; // Amarelo claro
+      quizContainer.style.backgroundColor = '#32A852';
       break;
     case "moderado":
-      quizContainer.style.backgroundColor = '#EBAC24'; // Laranja claro
+      quizContainer.style.backgroundColor = '#EBAC24';
       break;
     case "severo":
-      quizContainer.style.backgroundColor = '#E94335'; // Vermelho claro
+      quizContainer.style.backgroundColor = '#E94335';
       break;
   }
 
-  // Atualiza o conteúdo do resultContainer com os dados
+  // Update the resultContainer content with the data
   resultContainer.innerHTML = `
     <div class="welcome-layout-final ${classification.class}">
       <div class="welcome-final">
         <div class="logo">
         <img src=${classification.img} alt="logo">
         </div>
+        <div class="welcome-image--mobile">
+        <img src="${imageSrc}" alt="${altText}" class="result-image">
+        </div>
         <h2 class="result-title ${classification.class}">Suas respostas indicam que sua menopausa é:</h2>
         <div class="layout-btns">
           <div class="result-card ${classification.classBtn}">
           ${classification.text}
         </div>
-        <button class="reset-btn ${classification.classBtn}" onclick="resetQuiz()">Refazer</button>
+        <button class="reset-btn ${classification.classBtn}" onclick="resetQuiz()">
+          <img class="reset-btn--img ${classification.setaclass}" src="./reset.png" alt="reset">
+          Aperte F5 para reiniciar o teste</button>
         </div>
       </div>
       <div class="welcome-image">
@@ -673,15 +803,14 @@ function showResult() {
       </div>
     </div>
   `;
-
-      
-      // Completa a barra de progresso
-      progressBar.style.width = "100%";
-      
-      // Remove o contador de questões quando mostrar o resultado
-      const counter = document.querySelector(".question-counter");
-      if (counter) counter.remove();
-    }
+  
+  // Complete the progress bar
+  progressBar.style.width = "100%";
+  
+  // Remove the question counter when showing the result
+  const counter = document.querySelector(".question-counter");
+  if (counter) counter.remove();
+}
     
     // Reinicia o quiz
     function resetQuiz() {
