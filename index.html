@@ -533,19 +533,19 @@
   <div id="welcome-layout" class="welcome-layout">
     <div class="welcome">
       <div class="logo">
-        <img src="./logo.svg" alt="logo">
+        <img src="https://raw.githubusercontent.com/GoodGD-Dev/jefproject/41cf2c7a521f4eda6fefb2f269b0cf990621e80e/logo.svg" alt="logo">
       </div>
       <div class="welcome-image--mobile">
-        <img src="./IMAGEM.png" alt="test">
+        <img src="https://raw.githubusercontent.com/GoodGD-Dev/jefproject/refs/heads/main/IMAGEM.png" alt="test">
       </div>
       <h2 class="prompt-title">Avalie a escala da sua menopausa em minutos!</h2>
       <span class="prompt-text">A Escala de Avaliação da Menopausa (Menopause Rating Scale – MRS) avalia a qualidade de vida e os sintomas do climatério através de 11 questões distribuídas em 3 subescalas: sintomas somato-vegetativos, psicológicos e urogenitais.</span>
       <button class="start-btn" onclick="startQuiz()">INICIAR AVALIAÇÃO GRÁTIS
-        <img src="./setaprolado.svg" alt="icone">
+        <img src="https://raw.githubusercontent.com/GoodGD-Dev/jefproject/41cf2c7a521f4eda6fefb2f269b0cf990621e80e/setaprolado.svg" alt="icone">
       </button>
     </div>
     <div class="welcome-image">
-      <img src="./IMAGEM.png" alt="test">
+      <img src="https://raw.githubusercontent.com/GoodGD-Dev/jefproject/refs/heads/main/IMAGEM.png" alt="test">
     </div>
   </div>
   <div id="quiz-container" class="quiz-container">
@@ -810,19 +810,19 @@ function showResult() {
   
   switch(classification.class) {
     case "asintomatico":
-      imageSrc = "./sem.png";
+      imageSrc = "https://raw.githubusercontent.com/GoodGD-Dev/jefproject/refs/heads/main/sem.png";
       altText = "Assintomático ou Escasso";
       break;
     case "leve":
-      imageSrc = "leve.png";
+      imageSrc = "https://raw.githubusercontent.com/GoodGD-Dev/jefproject/refs/heads/main/leve.png";
       altText = "Leve";
       break;
     case "moderado":
-      imageSrc = "moderado.png";
+      imageSrc = "https://raw.githubusercontent.com/GoodGD-Dev/jefproject/refs/heads/main/moderado.png";
       altText = "Moderado";
       break;
     case "severo":
-      imageSrc = "severo.png";
+      imageSrc = "https://raw.githubusercontent.com/GoodGD-Dev/jefproject/refs/heads/main/severo.png";
       altText = "Severo";
       break;
   }
@@ -851,7 +851,7 @@ function showResult() {
     <div class="welcome-layout-final ${classification.class}">
       <div class="welcome-final">
         <div class="logo ${classification.img}">
-        <img src="./logo.svg " alt="logo">
+        <img src="https://raw.githubusercontent.com/GoodGD-Dev/jefproject/41cf2c7a521f4eda6fefb2f269b0cf990621e80e/logo.svg" alt="logo">
         </div>
         <div class="welcome-image--mobile">
         <img src="${imageSrc}" alt="${altText}" class="result-image">
@@ -865,7 +865,7 @@ function showResult() {
           </button>
         </a>
         <button class="reset-btn ${classification.f5}" onclick="resetQuiz()">
-          <img class="reset-btn--img ${classification.resetClass}" src="./seta.svg" alt="reset">
+          <img class="reset-btn--img ${classification.resetClass}" src="https://raw.githubusercontent.com/GoodGD-Dev/jefproject/refs/heads/main/severo.png" alt="reset">
           Aperte F5 para reiniciar o teste</button>
         </div>
       </div>
