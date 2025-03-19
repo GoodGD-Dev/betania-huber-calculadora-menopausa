@@ -252,7 +252,7 @@
       display: flex;
       justify-content: start;
       align-items: center;
-      gap: 40px;
+      gap: 80px;
     }
     
     .result-card {
@@ -355,6 +355,7 @@
       cursor: pointer;
       gap: 5px;
       padding: 0px;
+      word-wrap: break-word;
     }
 
     .reset-btn:hover {
@@ -523,7 +524,6 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 40px
     }
 
     .reset-btn {
@@ -869,7 +869,7 @@ function showResult() {
         <h2 class="result-title ${classification.class}">Suas respostas indicam que<br> sua menopausa é ${classification.text}</h2>
         <h2 class="result-title--mobile ${classification.class}">Suas respostas indicam que sua menopausa é ${classification.text}</h2>
         <div class="layout-btns">
-          <a href="#">
+          <a href="https://api.whatsapp.com/send?phone=5551999201492&text=Ol%C3%A1,%20venho%20do%20google%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es">
           <button class="result-card ${classification.classBtn}">
             AGENDAR CONSULTA
           </button>
